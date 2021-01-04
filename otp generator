@@ -1,1 +1,62 @@
+#include <bits/stdc++.h>
+using namespace std;
 
+string otp_str()
+{
+
+    int key;
+    srand((unsigned)time(0));
+    string str_key, str_temp;
+    for (int i = 0; i < 6; i++)
+    {
+
+        key = rand() % 9;
+        //cout << key <<"key"<< endl;
+        str_temp = to_string(key);
+        str_key = str_key + str_temp;
+        //cout<<str_temp<<"str_temp"<<endl;
+    }
+    cout << "the 6 digit random number is " << str_key << endl;
+    return str_key;
+}
+
+int main()
+{
+    //-----------------------------------------------------------------------
+    // system side program
+    //-----------------------------------------------------------------------
+    cout << "this program generate random number " << endl;
+
+    
+    //-----------------------------------------------------------------------
+    // forther section to send the string of number (ie otp ) to a number or email id
+
+    // yet to lern windows framework to send email
+    //-----------------------------------------------------------------------
+   
+    cout<<otp_str()<<endl;
+    
+   
+   
+    //-----------------------------------------------------------------------
+    // user verifing the otp
+    //-----------------------------------------------------------------------
+
+    cout<<"user side screen "<<endl;
+    cout<<"______________________"<<endl;
+    string str_value, str_key; //str_key inside the scope of main function 
+    str_key=otp_str();
+    cin >> str_value;
+
+    if (str_value == str_key)
+    {
+        cout << "email verified " << endl;
+    }
+    else
+    {
+        cout << "invalid otp" << endl;
+        cout<<"  tap to resending the otp "<<endl;
+        
+    }
+    return 0;
+}
